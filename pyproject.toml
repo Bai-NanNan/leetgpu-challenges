@@ -16,6 +16,11 @@ test = [
     "pytest>=8.0",
 ]
 
+[tool.pytest.ini_options]
+markers = [
+    "gpu: requires a CUDA-capable PyTorch environment and nvcc",
+]
+
 [tool.uv.sources]
 torch = { index = "pytorch-cu126" }
 
