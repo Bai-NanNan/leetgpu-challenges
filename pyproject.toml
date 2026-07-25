@@ -1,3 +1,29 @@
+[project]
+name = "leetgpu-challenges"
+version = "0.1.0"
+description = "Local CUDA and Triton development environment for LeetGPU challenges"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.0",
+    "requests>=2.32",
+    "torch>=2.6",
+    "triton>=3.2",
+    "websocket-client>=1.8",
+]
+
+[dependency-groups]
+test = [
+    "pytest>=8.0",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
 [tool.black]
 line-length = 100
 
