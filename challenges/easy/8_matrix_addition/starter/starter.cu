@@ -20,7 +20,6 @@ __global__ void matrix_add_GridStridLoop_float4(
     for(;index<vector_count;index += stride){
         float4 a = A[index];
         float4 b = B[index];
-
         C[index] = make_float4(
             a.x + b.x,
             a.y + b.y,
@@ -29,7 +28,21 @@ __global__ void matrix_add_GridStridLoop_float4(
         );
     }
     //Benchmark   median 0.9398 ms  min 0.9272 ms  p20 0.9313 ms  p80 0.9573 ms
+}
 
+__global__ void matrix_add_tail(
+    const float* __restrict__ A,
+    const float* __restrict__ B,
+    float* C,
+    int start,
+    int total
+) {
+    int index = start + blockIdx.x * blockDim.x + threadIdx.x;
+
+    if(index < total)
+    {
+        C[index] = A[index] + B[index];
+    }
 }
 
 // A, B, C are device pointers (i.e. pointers to memory on the GPU)
@@ -38,7 +51,7 @@ extern "C" void solve(const float* A, const float* B, float* C, int N) {
     // int blocksPerGrid = (N * N + threadsPerBlock - 1) / threadsPerBlock;
     // matrix_add<<<blocksPerGrid, threadsPerBlock>>>(A, B, C, N);
     int total = N*N;
-    int vector_count = (total+3) / 4;
+    int vector_count = total / 4;
     constexpr int threads = 256;
     constexpr int blocks = 256;
     matrix_add_GridStridLoop_float4<<<blocks, threads>>>(
@@ -48,7 +61,24 @@ extern "C" void solve(const float* A, const float* B, float* C, int N) {
         vector_count
     );
 
+    int remain_start = vector_count * 4;
 
+
+    if(remain_start < total)
+    {
+        int remain = total - remain_start;
+
+        int tail_blocks =
+            (remain + threads - 1) / threads;
+
+        matrix_add_tail<<<tail_blocks, threads>>>(
+            A,
+            B,
+            C,
+            remain_start,
+            total
+        );
+    }
     
     cudaDeviceSynchronize();
 }
