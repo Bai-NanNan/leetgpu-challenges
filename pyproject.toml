@@ -1,33 +1,35 @@
 [project]
 name = "leetgpu-challenges"
 version = "0.1.0"
-description = "Local CUDA and Triton development environment for LeetGPU challenges"
+description = "Local CUDA and Triton development environment for RTX 5070"
 requires-python = ">=3.12"
+
 dependencies = [
-    "numpy>=2.0",
+    "numpy>=2.2",
     "pypandoc-binary>=1.17",
     "requests>=2.32",
-    "torch>=2.6",
-    "triton>=3.2",
+    "torch>=2.7",
+    "triton>=3.3",
     "websocket-client>=1.8",
 ]
 
 [dependency-groups]
 test = [
-    "pytest>=8.0",
+    "pytest>=8.3",
 ]
 
 [tool.pytest.ini_options]
 markers = [
-    "gpu: requires a CUDA-capable PyTorch environment and nvcc",
+    "gpu: requires NVIDIA GPU, CUDA runtime and nvcc",
 ]
 
+# PyTorch CUDA 12.8 wheel
 [tool.uv.sources]
-torch = { index = "pytorch-cu126" }
+torch = { index = "pytorch-cu128" }
 
 [[tool.uv.index]]
-name = "pytorch-cu126"
-url = "https://download.pytorch.org/whl/cu126"
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
 explicit = true
 
 [tool.black]
