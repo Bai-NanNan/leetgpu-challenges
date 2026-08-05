@@ -12,27 +12,29 @@ $$
 
  The input parameters are `logits`, `true_labels`, `N` (number of samples), and `C` (number of classes). The result should be stored in `loss` (a pointer to a single float).
 
-## Implementation Requirements
+对每个样本使用 logits 的 log-sum-exp 减去真实类别的 logit，得到单样本交叉熵；最后对 `N` 个样本取平均，并将结果写入 `loss`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result (average loss) must be stored in `loss`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:  N = 2, C = 3
             logits = [[1.0, 2.0, 0.5], [0.1, 3.0, 1.5]]
             true_labels = [1, 1]
     Output: loss = [0.3548926]
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input:  N = 3, C = 4
             logits = [[-0.5, 1.5, 0.0, 1.0], [2.0, -1.0, 0.5, 0.5], [0.0, 0.0, 0.0, 0.0]]
             true_labels = [3, 0, 1]
     Output: loss = [0.98820376]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `N` ≤ 10,000
 - 2 ≤ `C` ≤ 1,000

@@ -23,15 +23,17 @@ Output dimensions:
 - `output_rows = input_rows - kernel_rows + 1`
 - `output_cols = input_cols - kernel_cols + 1`
 
-## Implementation Requirements
+输入是三维体数据，卷积核也是三维张量。程序应在不补零的 valid 边界条件下，对每个输出位置累加输入体与卷积核的对应乘积。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in `output`
 
-## Examples
+## Examples / 示例
 
-### Example 1:
+### Example 1 / 示例 1:
 
 Input volume $V \in \mathbb{R}^{3 \times 3 \times 3}$: 
 
@@ -78,7 +80,7 @@ $$
 [82, 163]
 $$
 
-### Example 2:
+### Example 2 / 示例 2:
 
 Input volume $V \in \mathbb{R}^{2 \times 2 \times 2}$: 
 
@@ -116,7 +118,7 @@ $$
 [36]
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `input_depth`, `input_rows`, `input_cols` ≤ 256
 - 1 ≤ `kernel_depth`, `kernel_rows`, `kernel_cols` ≤ 5

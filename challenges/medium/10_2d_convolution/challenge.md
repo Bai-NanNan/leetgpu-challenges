@@ -16,13 +16,15 @@ The convolution operation is defined as:
 
 $output[i][j] = \sum_{m=0}^{kernel\_rows-1} \sum_{n=0}^{kernel\_cols-1} input[i+m][j+n] * kernel[m][n]$
 
-## Implementation Requirements
+输入和卷积核都按行优先的一维数组存储；仅在卷积核完全覆盖输入的位置计算有效卷积，并将结果写入同样按行优先存储的 `output`。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the array `output`
 
-## Example 1:
+## Example 1 / 示例 1:
 
 **Input:**\
 `input` (3×3): 
@@ -59,7 +61,7 @@ $$
 \end{bmatrix}
 $$
 
-## Example 2:
+## Example 2 / 示例 2:
 
 **Input:**\
 `input` (4×4): 
@@ -98,7 +100,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `input_rows`, `input_cols` ≤ 3072
 - 1 ≤ `kernel_rows`, `kernel_cols` ≤ 31

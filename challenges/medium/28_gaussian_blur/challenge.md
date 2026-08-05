@@ -8,14 +8,16 @@ $$
 
  where $k_h$ and $k_w$ are the kernel height and width.
 
-## Implementation Requirements
+使用给定的归一化高斯核对图像执行二维卷积；图像边界之外的像素视为零，并将每个输出像素写入 `output`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the `output` array
 - Handle boundary conditions by using zero-padding (treat values outside the image boundary as zeros)
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
       image (5, 5) = [
@@ -41,7 +43,7 @@ $$
         [11.0625, 15.25, 16.0, 16.75, 12.9375]
       ]
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input:
       image (3, 3) = [
@@ -63,7 +65,7 @@ $$
         [31.0, 47.0, 37.0]
       ]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `input_rows`, `input_cols` ≤ 4096
 - 3 ≤ `kernel_rows`, `kernel_cols` ≤ 21

@@ -10,14 +10,16 @@ $$
 \beta = (X^TX)^{-1}X^Ty
 $$
 
-## Implementation Requirements
+给定特征矩阵 `X` 和目标向量 `y`，求使残差平方和最小的系数向量 `beta`。可使用上面的闭式解 `(X^T X)^{-1} X^T y` 完成计算。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted.
 - The `solve` function signature must remain unchanged.
 - The final coefficients must be stored in the `beta` vector.
 - Assume that the feature matrix $X$ is full rank (i.e., $X^TX$ is invertible).
 
-## Example:
+## Example / 示例:
 
 Input:\
 $X$ (samples × features): 
@@ -55,7 +57,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `n_samples` ≤ 100,000
 - 1 ≤ `n_features` ≤ 1,000

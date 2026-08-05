@@ -2,13 +2,15 @@ Implement a GPU program that raises a square matrix $A$ of size $N \times N$ to 
 The `solve` function receives a flattened input matrix `input` (row-major order), an empty output matrix `output` of the same size, the dimension `N`, and the exponent `P`.\
 You must compute $\text{output} = A^{P}$ where matrix multiplication is standard dense multiplication over 32-bit floating point numbers.
 
-## Implementation Requirements
+给定展平存储的方阵 `A` 和整数幂 `P`，使用标准的稠密矩阵乘法计算 `A^P`，并将同尺寸结果写入 `output`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are **not** permitted.
 - The `solve` function signature must remain unchanged.
 - The final result must be written to the `output` array in row-major order.
 
-## Example 1:
+## Example 1 / 示例 1:
 
       Input:
         input  = [[1.0, 2.0],
@@ -20,7 +22,7 @@ You must compute $\text{output} = A^{P}$ where matrix multiplication is standard
                   [81.0, 118.0]]
       
 
-## Example 2:
+## Example 2 / 示例 2:
 
       Input:
         input  = [[1.0, 0.0, 2.0],
@@ -34,7 +36,7 @@ You must compute $\text{output} = A^{P}$ where matrix multiplication is standard
                   [3.0, 0.0, 6.0]]
       
 
-## Constraints
+## Constraints / 约束
 
 - $1 \le N \le 1024$
 - $1 \le P \le 20$

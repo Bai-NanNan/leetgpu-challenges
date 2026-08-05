@@ -6,14 +6,16 @@ $$
 
 The input matrices $A$, $B$, and the initial state of $C$ contain 16-bit floating-point numbers (FP16/`half`). All matrices are stored in row-major order. The scalars $\alpha$ and $\beta$ are 32-bit floats.
 
-## Implementation Requirements
+实现带缩放项的 GEMM：先计算 `A × B`，再与初始矩阵 `C` 按 `alpha` 和 `beta` 组合。乘法累加使用 FP32，最终结果转换并写回 FP16 的 `C`。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries other than WMMA are not permitted).
 - The `solve` function signature must remain unchanged.
 - Accumulation during multiplication should use FP32 for better precision before converting the final result to FP16.
 - The final result must be stored back into matrix `C` as `half`.
 
-## Example:
+## Example / 示例:
 
 Input:\
 *(Note: Input matrices A, B, C_initial are FP16 type for the problem)*\
@@ -67,7 +69,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 16 ≤ `M`, `N`, `K` ≤ 4096
 - Performance is measured with `K` = 1,024, `M` = 1,024, `N` = 1,024

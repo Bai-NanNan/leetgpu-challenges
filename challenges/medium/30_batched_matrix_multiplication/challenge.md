@@ -6,13 +6,15 @@ $$
 
  All matrices are stored in row-major order and use 32-bit floating point numbers (FP32).
 
-## Implementation Requirements
+对 batch 中的每一对矩阵分别执行 `A_b × B_b`，得到形状为 `[B, M, N]` 的结果批次 `C`。所有矩阵均按行优先存储并使用 FP32。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the `C` array
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
     B = 2, M = 2, K = 3, N = 2
@@ -30,7 +32,7 @@ $$
       [[92.0, 68.0], [128.0, 95.0]]
     ]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `B` ≤ 128
 - 1 ≤ `M`, `N`, `K` ≤ 1024

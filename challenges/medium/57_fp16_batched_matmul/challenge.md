@@ -6,14 +6,16 @@ $$
 
  All matrices are stored in row-major order and use 16-bit floating point numbers (FP16/`half`). Accumulation during multiplication should use FP32 for better precision before converting the final result to FP16.
 
-## Implementation Requirements
+对每个 batch 分别执行 FP16 矩阵乘法；乘法过程使用 FP32 累加以提高精度，再将最终结果转换为 FP16 写入 `C`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - Accumulation during multiplication should use FP32 for better precision before converting the final result to FP16
 - The final result must be stored in the `C` array as `half`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
     B = 2, M = 2, K = 3, N = 2
@@ -31,7 +33,7 @@ $$
       [[92.0, 68.0], [128.0, 95.0]]
     ]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `B` ≤ 128
 - 1 ≤ `M`, `N`, `K` ≤ 1024

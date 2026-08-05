@@ -24,7 +24,9 @@ $$
 
 Write results into `output_tokens[b, :]` (shape $[B, T{+}1]$): accepted/resampled tokens fill positions $0$ through the accepted count (inclusive), remaining positions are zero.
 
-## Implementation Requirements
+逐序列、从左到右验证 draft token。按目标概率与 draft 概率之比决定接受或拒绝；拒绝时从调整后的分布采样替代 token，全部接受时则从最后一个目标分布采样 bonus token。
+
+## Implementation Requirements / 实现要求
 
 - Implement `solve(draft_tokens, draft_probs, target_probs, uniform_samples, output_tokens, B, T, V)`.
 - Do not change the function signature or use external libraries beyond the standard GPU frameworks.
@@ -33,7 +35,7 @@ Write results into `output_tokens[b, :]` (shape $[B, T{+}1]$): accepted/resample
 - Inverse CDF sampling: given distribution $\text{adj}$ (already normalized), find the smallest index $k$ where $\sum_{v=0}^{k} \text{adj}(v) \ge r$, where $r = \texttt{uniform_samples}[b, T]$. Clamp the result to $[0, V-1]$.
 - If the adjusted distribution is all zeros (i.e., $q_i \le p_i$ everywhere), fall back to the uniform distribution over $V$ tokens.
 
-## Example
+## Example / 示例
 
 Input: $B = 1,\; T = 3,\; V = 4$
 
@@ -82,7 +84,7 @@ $$
 \text{output_tokens} = \begin{bmatrix} 1 & 3 & 0 & 0 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `B` ≤ 256
 - 1 ≤ `T` ≤ 16

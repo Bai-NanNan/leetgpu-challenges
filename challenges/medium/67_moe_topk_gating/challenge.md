@@ -12,13 +12,15 @@ $$
 
 The selected experts must remain ordered by descending logit value, matching the order returned by `topk`. The `topk_weights` array must correspond positionally to `topk_indices` in that same order.
 
-## Implementation Requirements
+对每个 token 的专家 logits 选出最大的 `k` 项，保留降序索引，然后仅对选中的 logits 做 softmax，生成与 `topk_indices` 对齐的混合权重。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the `topk_weights` and `topk_indices` arrays
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
       logits = [[1.0, 2.0, 3.0, 4.0],
@@ -37,7 +39,7 @@ The selected experts must remain ordered by descending logit value, matching the
     Row 1: Top-2 values are 4.0 and 3.0 at indices 0 and 1.
            Softmax([4.0, 3.0]) = [0.7311, 0.2689]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M` ≤ 10,000 (number of tokens)
 - 1 ≤ `E` ≤ 256 (number of experts)

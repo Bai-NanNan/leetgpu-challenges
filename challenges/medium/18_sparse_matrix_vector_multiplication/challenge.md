@@ -8,13 +8,15 @@ $$
 
 The matrix $A$ is approximately 60 - 70% sparse.
 
-## Implementation Requirements
+矩阵 `A` 是约 60%–70% 元素为零的稀疏矩阵，向量 `x` 是稠密向量。对每一行计算非零矩阵元素与 `x` 的乘积之和，得到长度为 `M` 的向量 `y`。
+
+## Implementation Requirements / 实现要求
 
 - Use only GPU native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in vector `y`
 
-## Example:
+## Example / 示例:
 
 Input:\
 Matrix $A$ ($3 \times 4$): 
@@ -49,7 +51,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M`, `N` ≤ 10,000
 - The matrix $A$ is approximately 60-70% sparse (i.e., 60-70% of elements are zero)

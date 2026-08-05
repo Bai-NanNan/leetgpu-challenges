@@ -6,13 +6,15 @@ $$
 C_{ij} = \sum_{k=0}^{N-1} A_{ik} \cdot B_{kj} \quad \text{for} \quad i = 0, \ldots, M-1,\; j = 0, \ldots, K-1
 $$
 
-## Implementation Requirements
+将稀疏矩阵 `A` 与稠密矩阵 `B` 相乘，得到稠密矩阵 `C`。矩阵按行优先存储，`A` 约有 60%–70% 的元素为零。
+
+## Implementation Requirements / 实现要求
 
 - Use only GPU native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in matrix `C`
 
-## Example
+## Example / 示例
 
 Input:\
 Matrix $A$ ($3 \times 4$): 
@@ -47,7 +49,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M`, `N`, `K` ≤ 8,192
 - All values in `A` and `B` are 32-bit floats in the range \[−10, 10\]

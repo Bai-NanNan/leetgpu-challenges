@@ -19,7 +19,9 @@ $$
 y_{b,t,d} = \gamma_d \cdot \frac{s_{b,t,d} - \mu_{b,t}}{\sqrt{\sigma^2_{b,t} + \epsilon}} + \beta_d.
 $$
 
-## Implementation Requirements
+对于批次中的每个 token，先从 token embedding 表和 position embedding 表中查找对应向量并求和，然后沿 embedding 维度执行带可学习缩放、平移参数的 Layer Normalization。以上公式定义了该计算过程。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
@@ -29,7 +31,7 @@ $$
 - The variance is computed without Bessel's correction (divide by `D`, not `D-1`)
 - The final result must be stored in the `output` tensor with shape `(B, T, D)`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:  B = 1, T = 2, V = 3, P = 2, D = 4, eps = 1e-5
             token_ids        = [[2, 0]]
@@ -44,7 +46,7 @@ $$
     Output: output = [[[ 1.4142,  0.0000, -1.4142,  0.0000],
                        [-0.5773, -0.5773, -0.5773,  1.7320]]]
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `B` ≤ 64
 - 1 ≤ `T` ≤ 1,024

@@ -6,20 +6,22 @@ $$
 
  The Monte Carlo method approximates the integral by computing the average of the function values and multiplying by the interval width.
 
-## Implementation Requirements
+对均匀采样点上的函数值取平均，再乘以区间宽度 `b - a`，即可估计定积分。请在 GPU 上完成该蒙特卡洛积分。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the `result` variable
 - Solutions are tested with absolute tolerance of 1e-2 and relative tolerance of 1e-2
 
-## Example:
+## Example / 示例:
 
     Input:  a = 0, b = 2, n_samples = 8
             y_samples = [0.0625, 0.25, 0.5625, 1.0, 1.5625, 2.25, 3.0625, 4.0]
     Output: result = 3.1875
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `n_samples` ≤ 100,000,000
 - -1000.0 ≤ `a` \< `b` ≤ 1000.0

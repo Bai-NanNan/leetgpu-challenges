@@ -10,13 +10,15 @@ Given logits (unnormalized scores) from a language model:
 4.  Renormalize the nucleus probabilities to sum to 1
 5.  Sample a token from the nucleus using the provided random seed
 
-## Implementation Requirements
+先将 logits 转为概率并按概率降序排列，再找到累计概率达到阈值 `p` 的最小 token 集合，重新归一化后使用给定随机种子采样。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - Ensure numerical stability when computing softmax
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
       logits = [1.0, 2.0, 3.0, 0.5]
@@ -27,7 +29,7 @@ Given logits (unnormalized scores) from a language model:
       sampled_token = 2 or 1
       (tokens with highest probabilities, sampled randomly)
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input:
       logits = [10.0, 1.0, 1.0]
@@ -38,7 +40,7 @@ Given logits (unnormalized scores) from a language model:
       sampled_token = 0
       (single token dominates the probability mass)
 
-## Constraints
+## Constraints / 约束
 
 - 3 ≤ `vocab_size` ≤ 50,000
 - -100.0 ≤ `logits[i]` ≤ 100.0

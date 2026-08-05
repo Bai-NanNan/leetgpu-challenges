@@ -6,13 +6,15 @@ $$
 Y_{i,j} = X_{i,j} \times S_{row, col}
 $$
 
-## Implementation Requirements
+根据元素所在的 `T × T` tile，从尺度矩阵 `S` 中选择对应缩放因子，并计算 `Y[i,j] = X[i,j] × S[row,col]`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the output buffer `Y`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:
     M = 4, N = 4, TILE_SIZE = 2
@@ -40,7 +42,7 @@ $$
     Tile (1,0) is multiplied by S[1,0] (4.0).
     Tile (1,1) is multiplied by S[1,1] (0.25).
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M`, `N` ≤ 8192
 - `TILE_SIZE` ∈ {16, 32, 64, 128}

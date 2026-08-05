@@ -1,15 +1,23 @@
 Implement a program that performs a 1D convolution operation. Given an input array and a kernel (filter), compute the convolved output. The convolution should be performed with a "valid" boundary condition, meaning the kernel is only applied where it fully overlaps with the input.
 
+编写一个程序，执行一维卷积操作。给定一个输入数组和一个卷积核（滤波器），计算卷积输出。卷积应使用“valid”边界条件，即仅在卷积核与输入完全重叠的位置应用卷积核。
+
 ![](data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIwIiBoZWlnaHQ9IjIxMCIgdmlld2JveD0iMCAwIDQyMCAyMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9ImRpc3BsYXk6YmxvY2s7IG1hcmdpbjoyMHB4IGF1dG87IiBmb250LWZhbWlseT0ibW9ub3NwYWNlIiBmb250LXNpemU9IjEzIj4KICA8IS0tIEJhY2tncm91bmQgLS0+CiAgPHJlY3Qgd2lkdGg9IjQyMCIgaGVpZ2h0PSIyMTAiIHJ4PSI4IiBmaWxsPSIjMjIyIiAvPgoKICA8IS0tICJpbnB1dCIgbGFiZWwgLS0+CiAgPHRleHQgeD0iMTYiIHk9IjM4IiBmaWxsPSIjOTk5IiBmb250LXNpemU9IjExIj5pbnB1dDwvdGV4dD4KCiAgPCEtLSBJbnB1dCBjZWxscyAtLT4KICA8cmVjdCB4PSI2NSIgeT0iMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMzMzMiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIxIiAvPgogIDxyZWN0IHg9IjEyMCIgeT0iMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMzMzMiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIxIiAvPgogIDxyZWN0IHg9IjE3NSIgeT0iMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMzMzMiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIxIiAvPgogIDxyZWN0IHg9IjIzMCIgeT0iMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMzMzMiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIxIiAvPgogIDxyZWN0IHg9IjI4NSIgeT0iMjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMzMzMiIHN0cm9rZT0iIzU1NSIgc3Ryb2tlLXdpZHRoPSIxIiAvPgogIDwhLS0gSW5wdXQgdmFsdWVzIC0tPgogIDx0ZXh0IHg9IjkwIiB5PSI0MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2NjYyI+MTwvdGV4dD4KICA8dGV4dCB4PSIxNDUiIHk9IjQxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjY2NjIj4yPC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iNDEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNjY2MiPjM8L3RleHQ+CiAgPHRleHQgeD0iMjU1IiB5PSI0MSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2NjYyI+NDwvdGV4dD4KICA8dGV4dCB4PSIzMTAiIHk9IjQxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjY2NjIj41PC90ZXh0PgoKICA8IS0tIEtlcm5lbCBoaWdobGlnaHQgd2luZG93IG92ZXIgZmlyc3QgMyBpbnB1dCBjZWxscyAtLT4KICA8cmVjdCB4PSI2MyIgeT0iMTgiIHdpZHRoPSIxNjQiIGhlaWdodD0iMzYiIHJ4PSI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0NDc3YmIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWRhc2hhcnJheT0iNSwzIiAvPgoKICA8IS0tICJrZXJuZWwiIGxhYmVsIC0tPgogIDx0ZXh0IHg9IjE2IiB5PSI4NiIgZmlsbD0iIzk5OSIgZm9udC1zaXplPSIxMSI+a2VybmVsPC90ZXh0PgoKICA8IS0tIEtlcm5lbCBjZWxscyAoYWxpZ25lZCB1bmRlciBmaXJzdCAzIGlucHV0IGNlbGxzKSAtLT4KICA8cmVjdCB4PSI2NSIgeT0iNjgiIHdpZHRoPSI1MCIgaGVpZ2h0PSIzMiIgcng9IjMiIGZpbGw9IiMxZTJkNGQiIHN0cm9rZT0iIzQ0NzdiYiIgc3Ryb2tlLXdpZHRoPSIxLjUiIC8+CiAgPHJlY3QgeD0iMTIwIiB5PSI2OCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjMyIiByeD0iMyIgZmlsbD0iIzFlMmQ0ZCIgc3Ryb2tlPSIjNDQ3N2JiIiBzdHJva2Utd2lkdGg9IjEuNSIgLz4KICA8cmVjdCB4PSIxNzUiIHk9IjY4IiB3aWR0aD0iNTAiIGhlaWdodD0iMzIiIHJ4PSIzIiBmaWxsPSIjMWUyZDRkIiBzdHJva2U9IiM0NDc3YmIiIHN0cm9rZS13aWR0aD0iMS41IiAvPgogIDwhLS0gS2VybmVsIHZhbHVlcyAtLT4KICA8dGV4dCB4PSI5MCIgeT0iODkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4OGJiZmYiPjE8L3RleHQ+CiAgPHRleHQgeD0iMTQ1IiB5PSI4OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzg4YmJmZiI+MDwvdGV4dD4KICA8dGV4dCB4PSIyMDAiIHk9Ijg5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjODhiYmZmIj4tMTwvdGV4dD4KCiAgPCEtLSBNdWx0aXBsaWNhdGlvbiBzaWducyBiZXR3ZWVuIHBhaXJzIC0tPgogIDx0ZXh0IHg9IjkwIiB5PSIxMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM3NzciIGZvbnQtc2l6ZT0iMTEiPjHDlzE8L3RleHQ+CiAgPHRleHQgeD0iMTQ1IiB5PSIxMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM3NzciIGZvbnQtc2l6ZT0iMTEiPjLDlzA8L3RleHQ+CiAgPHRleHQgeD0iMjAwIiB5PSIxMTgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM3NzciIGZvbnQtc2l6ZT0iMTEiPjPDlygtMSk8L3RleHQ+CgogIDwhLS0gQ29tcHV0YXRpb24gbGluZSAtLT4KICA8dGV4dCB4PSIxNDUiIHk9IjE0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2FhYSIgZm9udC1zaXplPSIxMiI+PSAxICsgMCArICgtMykgPSAtMjwvdGV4dD4KCiAgPCEtLSBBcnJvdyBkb3duIHRvIG91dHB1dCAtLT4KICA8bGluZSB4MT0iMTQ1IiB5MT0iMTQ4IiB4Mj0iMTQ1IiB5Mj0iMTY4IiBzdHJva2U9IiM0NDc3YmIiIHN0cm9rZS13aWR0aD0iMS41IiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93aGVhZCkiPjwvbGluZT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFycm93aGVhZCIgbWFya2Vyd2lkdGg9IjgiIG1hcmtlcmhlaWdodD0iNiIgcmVmeD0iOCIgcmVmeT0iMyIgb3JpZW50PSJhdXRvIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwIDAsIDggMywgMCA2IiBmaWxsPSIjNDQ3N2JiIj48L3BvbHlnb24+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+CgogIDwhLS0gIm91dHB1dCIgbGFiZWwgLS0+CiAgPHRleHQgeD0iMTYiIHk9IjE4NyIgZmlsbD0iIzk5OSIgZm9udC1zaXplPSIxMSI+b3V0cHV0PC90ZXh0PgoKICA8IS0tIE91dHB1dCBjZWxsIC0tPgogIDxyZWN0IHg9IjEyMCIgeT0iMTcwIiB3aWR0aD0iNTAiIGhlaWdodD0iMzAiIHJ4PSIzIiBmaWxsPSIjMWEzYTFhIiBzdHJva2U9IiM0NGFhNDQiIHN0cm9rZS13aWR0aD0iMS41IiAvPgogIDx0ZXh0IHg9IjE0NSIgeT0iMTkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjZkZDY2IiBmb250LXdlaWdodD0iYm9sZCI+LTI8L3RleHQ+CgogIDwhLS0gRWxsaXBzaXMgZm9yIHJlbWFpbmluZyBvdXRwdXQgLS0+CiAgPHRleHQgeD0iMTk1IiB5PSIxOTAiIGZpbGw9IiM2NjYiIGZvbnQtc2l6ZT0iMTQiPuKApjwvdGV4dD4KPC9zdmc+)
 
 The input consists of two arrays:
 
-- `input`: A 1D array of 32-bit floating-point numbers.
-- `kernel`: A 1D array of 32-bit floating-point numbers representing the convolution kernel.
+输入由两个数组组成：
+
+- `input`: A 1D array of 32-bit floating-point numbers. / `input`：由 32 位浮点数组成的一维数组。
+- `kernel`: A 1D array of 32-bit floating-point numbers representing the convolution kernel. / `kernel`：表示卷积核的 32 位浮点一维数组。
 
 The output should be written to the `output` array, which will have a size of `input_size - kernel_size + 1`.
 
+输出应写入 `output` 数组，其大小为 `input_size - kernel_size + 1`。
+
 The convolution operation is defined mathematically as:
+
+卷积操作的数学定义如下：
 
 $$
 output[i] = \sum_{j=0}^{kernel\_size-1} input[i + j] \cdot kernel[j]
@@ -17,25 +25,27 @@ $$
 
 where $i$ ranges from 0 to $input\_size - kernel\_size$.
 
-## Implementation Requirements
+其中 $i$ 的取值范围为 0 到 $input\_size - kernel\_size$。
 
-- Use only native features (external libraries are not permitted)
-- The `solve` function signature must remain unchanged
-- The final result must be stored in the array `output`
+## Implementation Requirements / 实现要求
 
-## Example 1:
+- Use only native features (external libraries are not permitted) / 只能使用原生功能（不得使用外部库）
+- The `solve` function signature must remain unchanged / `solve` 函数签名必须保持不变
+- The final result must be stored in the array `output` / 最终结果必须存储在数组 `output` 中
+
+## Example 1 / 示例 1
 
     Input: input = [1, 2, 3, 4, 5], kernel = [1, 0, -1]
     Output: [-2, -2, -2]
 
-## Example 2:
+## Example 2 / 示例 2
 
     Input: input = [2, 4, 6, 8], kernel = [0.5, 0.2]
     Output: [1.8, 3.2, 4.6]
 
-## Constraints
+## Constraints / 约束
 
-- 1 ≤ `input_size` ≤ 1,500,000
-- 1 ≤ `kernel_size` ≤ 2047
-- `kernel_size` ≤ `input_size`
-- Performance is measured with `input_size` = 1,500,000, `kernel_size` = 2,047
+- 1 ≤ `input_size` ≤ 1,500,000 / `input_size` 的范围为 1 至 1,500,000
+- 1 ≤ `kernel_size` ≤ 2047 / `kernel_size` 的范围为 1 至 2047
+- `kernel_size` ≤ `input_size` / `kernel_size` 不大于 `input_size`
+- Performance is measured with `input_size` = 1,500,000, `kernel_size` = 2,047 / 性能测试使用 `input_size` = 1,500,000、`kernel_size` = 2,047

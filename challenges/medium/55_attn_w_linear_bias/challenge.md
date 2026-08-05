@@ -6,13 +6,15 @@ $$
 
 where α is a slope controlling the linear bias and `Δ = i - j` represents the relative position between query `i` and key `j`. The softmax function is applied row-wise. `Q`, `K`, `V`, `output`, and `α` are all of data type `float32`; `M`, `N`, `d` are of data type `int32`.
 
-## Implementation Requirements
+按照 ALiBi 方法，在缩放点积注意力的 logits 中加入由相对位置 `i - j` 和斜率 `alpha` 决定的线性偏置，然后逐行执行 softmax 并与 `V` 相乘。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the output matrix `output`
 
-## Example 1:
+## Example 1 / 示例 1:
 
 **Input:**\
 `Q` (2×4): 
@@ -56,7 +58,7 @@ $$
 \end{bmatrix}
 $$
 
-## Example 2:
+## Example 2 / 示例 2:
 
 **Input:**\
 `Q` (1×2): 
@@ -96,7 +98,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - Matrix `Q` is of size `M×d` and matrices `K` and `V` are of size `N×d`
 - 1 ≤ `M`, `N` ≤ 2048

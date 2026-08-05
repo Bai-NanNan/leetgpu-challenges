@@ -8,26 +8,28 @@ $$
 
 All inputs are stored as 16-bit floating point numbers (FP16/`half`). For best precision, accumulation during multiplication should use FP32 before converting the final result to FP16.
 
-## Implementation Requirements
+计算两个 FP16 向量对应元素乘积的总和。为提高精度，乘积累加应使用 FP32，最终再转换回 FP16。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - Accumulation during multiplication should use FP32 for better precision before converting the final result to FP16
 - The final result must be stored in the output variable as `half`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:  A = [1.0, 2.0, 3.0, 4.0]
                    B = [5.0, 6.0, 7.0, 8.0]
            Output: result = 70.0  (1.0*5.0 + 2.0*6.0 + 3.0*7.0 + 4.0*8.0)
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input:  A = [0.5, 1.5, 2.5]
                    B = [2.0, 3.0, 4.0]
            Output: result = 15.5  (0.5*2.0 + 1.5*3.0 + 2.5*4.0)
 
-## Constraints
+## Constraints / 约束
 
 - `A` and `B` have identical lengths
 - 1 ≤ `N` ≤ 100,000,000

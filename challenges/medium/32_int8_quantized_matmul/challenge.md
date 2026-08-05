@@ -12,14 +12,16 @@ $$
 
  where `s_A = scale_A`, `z_A = zero_point_A`, etc.
 
-## Implementation Requirements
+先在 int32 中累加去零点后的乘积，再按量化比例缩放为 float32，四舍五入、加上输出零点，最后将结果限制在 `[-128, 127]` 并写入 int8 矩阵 `C`。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the output matrix `C` as `int8`
 - After accumulation in int32 and scaling in float32, values must be rounded to the nearest integer, shifted by `zero_point_C`, and clamped to the `[-128, 127]` range
 
-## Example 1:
+## Example 1 / 示例 1:
 
          Input:
          A = [[1, 2],
@@ -35,7 +37,7 @@ $$
               [43, 50]]
          
 
-## Example 2:
+## Example 2 / 示例 2:
 
          Input:
          A = [[1, 2]]
@@ -49,7 +51,7 @@ $$
          C = [[6]]
          
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M`, `N`, `K` ≤ 4096
 - `scale_A`, `scale_B`, `scale_C` are positive floats

@@ -1,10 +1,14 @@
 Implement **Linear Attention** for a given set of matrices, following the method described in <a href="https://arxiv.org/pdf/2006.16236" target="_blank">"Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention"</a> . Given the query matrix `Q` of size `M×d`, key matrix `K` of size `M×d`, and value matrix `V` of size `M×d`, your program should compute the output matrix using the formula: 
 
+按照 <a href="https://arxiv.org/pdf/2006.16236" target="_blank">《Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention》</a> 中介绍的方法，实现给定矩阵的**线性注意力**。给定大小为 `M×d` 的查询矩阵 `Q`、键矩阵 `K` 和值矩阵 `V`，程序应使用下式计算输出矩阵：
+
 $$
 \text{LinearAttention}(Q, K, V) = \frac{\phi(Q) \left(\phi(K)^T V \right)}{\phi(Q) \left(\sum_j \phi(K_j) \right)}
 $$
 
 where $\phi(x)$ is a feature map applied element-wise, for example: 
+
+其中 $\phi(x)$ 是逐元素应用的特征映射，例如：
 
 $$
 \phi(x) = \text{ELU}(x) + 1 =
@@ -16,13 +20,15 @@ $$
 
  All matrices `Q`, `K`, `V`, and `output` are of type `float32`, and `M` and `d` are of type `int32`.
 
-## Implementation Requirements
+矩阵 `Q`、`K`、`V` 和 `output` 的类型均为 `float32`，`M` 和 `d` 的类型为 `int32`。
 
-- Use only native features (external libraries are not permitted)
-- The `solve` function signature must remain unchanged
-- The final result must be stored in the output matrix `output`
+## Implementation Requirements / 实现要求
 
-## Example 1:
+- Use only native features (external libraries are not permitted) / 只能使用原生功能（不得使用外部库）
+- The `solve` function signature must remain unchanged / `solve` 函数签名必须保持不变
+- The final result must be stored in the output matrix `output` / 最终结果必须存储在输出矩阵 `output` 中
+
+## Example 1 / 示例 1
 
 **Input:**\
 `Q` (2×4): 
@@ -62,7 +68,7 @@ $$
 \end{bmatrix}
 $$
 
-## Example 2:
+## Example 2 / 示例 2
 
 **Input:**\
 `Q` (2×2): 
@@ -102,11 +108,11 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
-- Matrix `Q`, `K`, and `V` are all of size `M×d`
-- 1 ≤ `M` ≤ 10000
-- 1 ≤ `d` ≤ 128
-- All elements in `Q`, `K`, and `V` are sampled from`[-100.0, 100.0]`
-- Data type for all matrices is `float32`
-- Performance is measured with `M` = 10,000
+- Matrix `Q`, `K`, and `V` are all of size `M×d` / 矩阵 `Q`、`K` 和 `V` 的大小均为 `M×d`
+- 1 ≤ `M` ≤ 10000 / `M` 的范围为 1 至 10000
+- 1 ≤ `d` ≤ 128 / `d` 的范围为 1 至 128
+- All elements in `Q`, `K`, and `V` are sampled from`[-100.0, 100.0]` / `Q`、`K` 和 `V` 中的元素均从 `[-100.0, 100.0]` 范围采样
+- Data type for all matrices is `float32` / 所有矩阵的数据类型均为 `float32`
+- Performance is measured with `M` = 10,000 / 性能测试使用 `M` = 10,000

@@ -12,7 +12,9 @@ $$
 \text{rotate\_half}([x_1, \dots, x_{d/2}, x_{d/2+1}, \dots, x_d]) = [-x_{d/2+1}, \dots, -x_d, x_1, \dots, x_{d/2}]
 $$
 
-## Implementation Requirements
+根据预计算的 cosine 和 sine 分量旋转 query 向量，从而注入位置信息；`rotate_half` 会交换两半向量并将前半部分取反。
+
+## Implementation Requirements / 实现要求
 
 - External libraries are not permitted
 - The `solve` function signature must remain unchanged
@@ -20,7 +22,7 @@ $$
 - `D` (head dimension) is guaranteed to be an even number
 - The final result must be stored in the output variable with the same shape `(M, D)`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:  Q   = [[1.0, 2.0, 3.0, 4.0],
                    [1.0, 1.0, 1.0, 1.0]]
@@ -32,7 +34,7 @@ $$
                       [-1.0, -1.0, 1.0, 1.0]]
             (Row 0 is identity via Cos; Row 1 is rotated via Sin)
 
-## Constraints
+## Constraints / 约束
 
 - `Q`, `cos`, and `sin` have identical dimensions
 - `D` % 2 == 0

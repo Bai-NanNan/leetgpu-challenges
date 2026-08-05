@@ -1,12 +1,14 @@
 Implement a program that computes the sum of a 2D subarray of 32-bit integers. You are given an input 2D array `input` of length `N x M`, and two row indices `S_ROW` and `E_ROW` and two column indices `S_COL` and `E_COL`. `S_ROW`, `E_ROW`, `S_COL` and `E_COL` are inclusive, 0-based start and end indices — compute the sum of `input[S_ROW..E_ROW][S_COL..E_COL]`.
 
-## Implementation Requirements
+计算二维数组中行区间 `[S_ROW, E_ROW]` 与列区间 `[S_COL, E_COL]` 的闭区域内所有整数的和。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the `output` variable
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input:  input = [[1, 2, 3],
                      [4, 5, 1]]
@@ -14,14 +16,14 @@ Implement a program that computes the sum of a 2D subarray of 32-bit integers. Y
             S_ROW = 0, E_ROW = 1, S_COL = 1, E_COL = 2
     Output: output = 11
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input:  input = [[5, 10],
                      [5, 2]]
             S_ROW = 0, E_ROW = 0, S_COL = 1, E_COL = 1
     Output: output = 10
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `N, M` ≤ 10,000
 - 1 ≤ `input[i]` ≤ 10

@@ -6,23 +6,25 @@ $\sigma(x)_i = \frac{e^{x_i}}{\sum_{j=1}^{n} e^{x_j}}$
 
 Your solution should handle potential overflow issues by using the "max trick". Subtract the maximum value of the input array from each element before exponentiation.
 
-## Implementation Requirements
+对输入数组计算 softmax。为避免指数溢出，先减去数组最大值，再进行指数运算和归一化。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the array `output`
 
-## Example 1:
+## Example 1 / 示例 1:
 
     Input: [1.0, 2.0, 3.0], N = 3
     Output: [0.090, 0.244, 0.665] (approximately)
 
-## Example 2:
+## Example 2 / 示例 2:
 
     Input: [-10.0, -5.0, 0.0, 5.0, 10.0], N = 5
     Output: [2.047e-09, 3.038e-07, 4.509e-05, 6.693e-03, 9.933e-01] (approximately)
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `N` ≤ 500,000
 - Performance is measured with `N` = 500,000

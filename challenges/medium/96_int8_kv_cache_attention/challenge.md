@@ -1,6 +1,8 @@
 Implement decode-phase multi-head attention where the key and value caches are stored as `int8` with per-token scale factors. This memory layout halves KV-cache bandwidth versus `float32` and is used in production LLM serving systems such as TensorRT-LLM and vLLM. Given a query tensor `Q` for a single new token, `int8` key cache `K_int8`, `int8` value cache `V_int8`, and per-token scales `k_scale` and `v_scale`, dequantize the caches and compute scaled dot-product attention to produce `output`. All non-integer tensors use `float32`.
 
-## Implementation Requirements
+先使用每个 token 的尺度将 int8 的 K/V cache 反量化为 float32，再计算缩放点积注意力，并沿序列维度执行 softmax，最终得到新 token 的输出。
+
+## Implementation Requirements / 实现要求
 
 - Implement the function `solve(Q, K_int8, V_int8, k_scale, v_scale, output, num_heads, seq_len, head_dim)`.
 - Do not change the function signature or use external libraries beyond the standard GPU frameworks.
@@ -8,7 +10,7 @@ Implement decode-phase multi-head attention where the key and value caches are s
 - Dequantize using per-token scales: `K_float[h, s, d] = K_int8[h, s, d] × k_scale[h, s]` (and analogously for V).
 - Use scaled dot-product attention with scale factor `1 / sqrt(head_dim)` and a softmax over the sequence dimension.
 
-## Example
+## Example / 示例
 
 With `num_heads` = 1, `seq_len` = 3, `head_dim` = 4:
 
@@ -51,7 +53,7 @@ $$
 \begin{bmatrix} 5.00 & 6.00 & 7.00 & 8.00 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `num_heads` ≤ 64
 - 1 ≤ `seq_len` ≤ 32,768

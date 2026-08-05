@@ -6,13 +6,15 @@ $$
 
  where the softmax function is applied row-wise.
 
-## Implementation Requirements
+按公式计算缩放点积注意力：先求 `QK^T / sqrt(d)`，对每一行执行 softmax，再与值矩阵 `V` 相乘。
+
+## Implementation Requirements / 实现要求
 
 - Use only GPU native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in the output matrix `output`
 
-## Example 1:
+## Example 1 / 示例 1:
 
 **Input:**\
 `Q` (2×4): 
@@ -54,7 +56,7 @@ $$
 \end{bmatrix}
 $$
 
-## Example 2:
+## Example 2 / 示例 2:
 
 **Input:**\
 `Q` (1×2): 
@@ -92,7 +94,7 @@ $$
 \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - Matrix `Q` is of size `M×d` and matrices `K` and `V` are of size `N×d`
 - 1 ≤ `M`, `N` ≤ 100,000

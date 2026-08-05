@@ -12,14 +12,16 @@ $$
 
 where positions `l − k < 0` are treated as zero (zero-pad the left boundary). The tensor layout is **channels-last**: `x[b, l, d]` is stored at offset `b × L × D + l × D + d`.
 
-## Implementation Requirements
+这是按通道独立进行的因果一维卷积：位置 `l` 只能使用当前位置及过去的输入，序列左侧越界位置按零处理，输出保持 channels-last 布局。
+
+## Implementation Requirements / 实现要求
 
 - The `solve` function signature must remain unchanged
 - The result must be written into the `output` tensor
 - Use only native features (external libraries are not permitted)
 - Input positions before the start of the sequence (i.e. indices `l − k < 0`) must be treated as zero
 
-## Example
+## Example / 示例
 
 With `B` = 1, `L` = 4, `D` = 2, `K` = 3:
 
@@ -38,7 +40,7 @@ With `B` = 1, `L` = 4, `D` = 2, `K` = 3:
                [4.0, 12.0],   # l=2: d0: 5*1+3*0+1*(-1)=4  d1: 6+4+2=12
                [4.0, 18.0]]]  # l=3: d0: 7*1+5*0+3*(-1)=4  d1: 8+6+4=18
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `B` ≤ 16 (batch size)
 - 1 ≤ `L` ≤ 8,192 (sequence length)

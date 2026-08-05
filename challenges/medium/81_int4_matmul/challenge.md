@@ -6,13 +6,15 @@ Implement a weight-only INT4 quantized matrix multiplication (W4A16), a core ker
 
     W[n, k] = (w_q_nibble[n, k] - 8) * scales[n, k // group_size]
 
-## Implementation Requirements
+每个字节打包两个无符号 INT4 权重，高四位和低四位分别对应相邻权重；解包后减去偏移 8，并按沿 `K` 维度的分组尺度反量化，再与 FP16 激活矩阵相乘。
+
+## Implementation Requirements / 实现要求
 
 - Use only native features (external libraries are not permitted)
 - The `solve` function signature must remain unchanged
 - The final result must be stored in `y`
 
-## Example
+## Example / 示例
 
 Input (`M` = 2, `N` = 4, `K` = 4, `group_size` = 2):
 
@@ -72,7 +74,7 @@ $$
   \end{bmatrix}
 $$
 
-## Constraints
+## Constraints / 约束
 
 - 1 ≤ `M`, `N` ≤ 8,192
 - 1 ≤ `K` ≤ 8,192
